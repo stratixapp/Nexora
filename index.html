@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXORA — Everything, Beautifully Delivered</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<script>
+  // Show the login/intro screen first, once per browser session, before the main store.
+  if (!sessionStorage.getItem("nexoraEntered")) {
+    location.replace("account.html?next=index.html");
+  }
+</script></head>
+<body>
+<div class="nexora-loader" id="nexoraLoader"><span>N</span></div>
+<div class="announcement">FREE DELIVERY ON ORDERS ABOVE ₹999 <span>•</span> WHATSAPP US TO ORDER</div>
+<header class="header">
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav id="catNav"><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><button id="searchBtn" aria-label="Search">⌕</button><a class="cart-link" href="cart.html" aria-label="Cart">🛒<span class="cart-badge" id="cartBadge">0</span></a><a class="admin-link" href="admin-login.html">Admin</a><a class="admin-link" id="accountLink" href="account.html">Sign in</a></div>
+</header>
+<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-top"><a class="logo" href="index.html">NEXORA<span>.</span></a><button class="close" id="closeSideMenu">×</button></div>
+  <div id="sideMenuProfile"></div>
+  <p class="side-menu-label">Shop by category</p>
+  <div id="sideMenuCats"><p class="muted">Loading…</p></div>
+  <p class="side-menu-label">Store</p>
+  <a class="side-link" href="admin-login.html">🔑 Admin login</a>
+</div>
+
+<main>
+<section class="hero" id="hero">
+  <div class="hero-copy"><p class="eyebrow">New Season · Fashion · Grocery · Baby & More</p><h1>Everything you<br><em>need, beautifully.</em></h1><p>One store for the pieces you wear, the groceries you run out of, and the little things your baby needs — curated and delivered with care.</p><a class="btn dark" href="#shop">Shop the edit <span>→</span></a></div>
+  <div class="hero-image" id="heroImage"><div class="hero-badge">NEXORA<br><span>ALL IN ONE PLACE</span></div></div>
+</section>
+
+<section class="promo-banner" id="promoBanner"></section>
+
+<section class="marquee"><div>NEXORA — FASHION • GROCERY • NURSERY • AND WHATEVER'S NEXT • NEXORA — FASHION • GROCERY • NURSERY • AND WHATEVER'S NEXT •</div></section>
+
+<section class="section" id="categories">
+  <div class="section-head"><div><p class="eyebrow">Browse</p><h2>Shop by category</h2></div></div>
+  <div class="category-grid" id="categoryGrid"><p class="muted">Loading categories…</p></div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-head"><div><p class="eyebrow">Fresh In</p><h2>Latest arrivals</h2></div></div>
+  <div class="filters" id="filters"><button class="filter active" data-slug="">All</button></div>
+  <div class="product-grid" id="products"><p class="muted">Loading products…</p></div>
+</section>
+
+<section class="newsletter" id="about"><p class="eyebrow">JOIN THE NEXORA WORLD</p><h2>First look. Best picks.</h2><p>Sign up for new arrivals, restocks and special offers.</p><form onsubmit="event.preventDefault(); alert('Welcome to NEXORA.'); this.reset();"><input type="email" placeholder="Your email address" required><button class="btn dark">Join us →</button></form></section>
+</main>
+
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="#shop">Shop</a><a href="#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+<div class="search-modal" id="searchModal"><button class="close" id="closeSearch">×</button><input id="searchInput" placeholder="Search products…"><div id="searchResults"></div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+</body></html>

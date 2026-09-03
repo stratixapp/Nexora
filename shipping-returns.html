@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping &amp; Returns — NEXORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body style="display:block">
+<header class="header">
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><a class="admin-link" href="settings.html">Back to Settings</a></div>
+</header>
+
+<main style="max-width:700px;margin:0 auto;padding:50px 6vw 100px;line-height:1.8;color:var(--muted)">
+  <p class="eyebrow">POLICIES</p>
+  <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:38px;margin:4px 0 10px;color:var(--ink)">Shipping &amp; Returns</h1>
+  <p style="font-size:12px;color:#a48a92;margin-bottom:34px">Last updated: <span id="lastUpdated"></span> — placeholder text, edit this page for your store.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">1. Delivery areas</h2>
+  <p>We currently deliver within [add your service area/pincodes here]. If you're unsure whether we deliver to your location, message us on WhatsApp before ordering and we'll confirm.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">2. Delivery charges</h2>
+  <p>Delivery is <strong>free above <span id="freeThresholdNote">₹999</span></strong>; a flat charge of <span id="deliveryChargeNote">₹49</span> applies below that, shown automatically in your cart before you check out.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">3. Delivery timelines</h2>
+  <p>Typical delivery takes [add your usual timeline, e.g. 2-5 working days]. Exact timing is confirmed over WhatsApp once your order is placed, since it can vary by location and item availability.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">4. Order tracking</h2>
+  <p>Since orders are handled directly over WhatsApp rather than a courier tracking system, updates on your order status will be shared in your WhatsApp chat with us. Feel free to ask anytime.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">5. Cancellations</h2>
+  <p>You can cancel or change an order by messaging us on WhatsApp any time before we confirm dispatch, at no charge. Once dispatched, the return/exchange terms below apply instead.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">6. Returns &amp; exchanges</h2>
+  <p>Contact us on WhatsApp within <strong>48 hours of delivery</strong> for:</p>
+  <ul style="padding-left:20px;margin:10px 0">
+    <li>Damaged or incorrect items</li>
+    <li>Size or colour exchange, where stock allows (use the <a href="index.html" style="color:var(--pink2);text-decoration:underline">Size Guide</a> on a product page to check fit before ordering)</li>
+    <li>Any other quality concerns</li>
+  </ul>
+  <p>Replace this window and these conditions with your store's actual return policy.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">7. Refunds</h2>
+  <p>Since NEXORA doesn't process online payments, refunds (where applicable) are handled directly — as store credit, a replacement item, or a reversal of the payment method used at delivery, as agreed over WhatsApp.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">8. Non-returnable items</h2>
+  <p>[Add any items you don't accept returns on — e.g. innerwear, perishable groceries, or made-to-order pieces.]</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">9. Contact</h2>
+  <p>For any shipping or return question, reach us on WhatsApp: <a id="shipWaLink" href="#" target="_blank" rel="noopener" style="color:var(--pink2);text-decoration:underline">message us here</a>.</p>
+
+  <p style="margin-top:40px;padding:16px;background:#f8edf0;font-size:12px;color:#8a6d76">This is starter placeholder text, not legal advice. Fill in the bracketed details for your store and have it reviewed before relying on it for a live business.</p>
+</main>
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="index.html#shop">Shop</a><a href="index.html#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
+(async () => {
+  if (typeof NEXORA_READY === "undefined" || !NEXORA_READY) return;
+  const waNumber = (await dbGetSetting("whatsapp_number")) || "919999999999";
+  const link = document.getElementById("shipWaLink");
+  if (link) link.href = `https://wa.me/${waNumber}`;
+  const charge = (await dbGetSetting("delivery_charge")) ?? 49;
+  const threshold = (await dbGetSetting("free_delivery_threshold")) ?? 999;
+  const c = document.getElementById("deliveryChargeNote");
+  const t = document.getElementById("freeThresholdNote");
+  if (c) c.textContent = `₹${charge}`;
+  if (t) t.textContent = `₹${threshold}`;
+})();
+</script>
+</body></html>

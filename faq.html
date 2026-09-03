@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — NEXORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body style="display:block">
+<header class="header">
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><a class="admin-link" href="settings.html">Back to Settings</a></div>
+</header>
+
+<main style="max-width:700px;margin:0 auto;padding:50px 6vw 100px">
+  <p class="eyebrow">SUPPORT</p>
+  <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:38px;margin:4px 0 30px;color:var(--ink)">Frequently asked questions</h1>
+
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary>Do I need an account to order?</summary>
+      <p>No — you can browse and order as a guest. Add items to your cart, fill in your delivery details there, and send your order on WhatsApp. Creating an account just saves your details for next time.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How do I actually place an order?</summary>
+      <p>Add items to your cart, review the total, then tap "Contact via WhatsApp" — it opens a pre-filled message with your order, items, and total for us to confirm.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What payment methods do you accept?</summary>
+      <p>Payment is arranged directly over WhatsApp once your order is confirmed — [add your accepted methods here, e.g. UPI, cash on delivery, bank transfer].</p>
+    </details>
+    <details class="faq-item">
+      <summary>How much is delivery, and is it free?</summary>
+      <p>Delivery is free above the threshold shown in your cart; a flat charge applies below it. See <a href="shipping-returns.html" style="color:var(--pink2);text-decoration:underline">Shipping &amp; Returns</a> for details.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How do I pick the right size?</summary>
+      <p>On any product with sizes, tap "Size guide" next to the size options for a chest/waist/hip chart. Still unsure? Message us on WhatsApp before ordering and we'll help.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can I cancel or change my order?</summary>
+      <p>Yes — message us on WhatsApp any time before we confirm dispatch, at no charge.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What if an item arrives damaged or the wrong size?</summary>
+      <p>Contact us on WhatsApp within 48 hours of delivery and we'll sort out a return or exchange. Full details in <a href="shipping-returns.html" style="color:var(--pink2);text-decoration:underline">Shipping &amp; Returns</a>.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Is my personal information safe?</summary>
+      <p>Yes — we only use your details to fulfil orders, never sell them, and you can delete your saved details anytime from Settings. See our <a href="privacy.html" style="color:var(--pink2);text-decoration:underline">Privacy Policy</a> for the full picture.</p>
+    </details>
+    <details class="faq-item">
+      <summary>I still have a question — how do I reach you?</summary>
+      <p>Message us on WhatsApp: <a id="faqWaLink" href="#" target="_blank" rel="noopener" style="color:var(--pink2);text-decoration:underline">chat with us here</a>.</p>
+    </details>
+  </div>
+</main>
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="index.html#shop">Shop</a><a href="index.html#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+(async () => {
+  if (typeof NEXORA_READY === "undefined" || !NEXORA_READY) return;
+  const waNumber = (await dbGetSetting("whatsapp_number")) || "919999999999";
+  const link = document.getElementById("faqWaLink");
+  if (link) link.href = `https://wa.me/${waNumber}`;
+})();
+</script>
+</body></html>

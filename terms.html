@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms &amp; Conditions — NEXORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"></head>
+<body style="display:block">
+<header class="header">
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><a class="admin-link" href="settings.html">Back to Settings</a></div>
+</header>
+
+<main style="max-width:700px;margin:0 auto;padding:50px 6vw 100px;line-height:1.8;color:var(--muted)">
+  <p class="eyebrow">POLICIES</p>
+  <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:38px;margin:4px 0 10px;color:var(--ink)">Terms &amp; Conditions</h1>
+  <p style="font-size:12px;color:#a48a92;margin-bottom:34px">Last updated: <span id="lastUpdated"></span> — placeholder text, edit this page for your store.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">1. Orders</h2>
+  <p>Orders placed through NEXORA are confirmed over WhatsApp. Adding items to your cart does not guarantee availability or reserve stock — availability is confirmed when we respond to your order message.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">2. Pricing</h2>
+  <p>All prices are listed in Indian Rupees (₹) and include applicable taxes unless stated otherwise. Delivery charges are calculated automatically at checkout and shown before you send your order.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">3. Payment</h2>
+  <p>Payment terms are confirmed directly over WhatsApp at the time of order. NEXORA does not store or process card details on this website.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">4. Delivery</h2>
+  <p>Delivery timelines will be shared when your order is confirmed. Delivery is free above the threshold shown in your cart; a flat delivery charge applies below it. Full details in <a href="shipping-returns.html" style="color:var(--pink2);text-decoration:underline">Shipping &amp; Returns</a>.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">5. Size &amp; Fit</h2>
+  <p>Where available, use the Size Guide on a product page to check measurements before ordering. Sizing can vary slightly between styles — if you're unsure between two sizes, message us on WhatsApp before you order and we'll help you choose.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">6. Cancellations, Returns &amp; Exchanges</h2>
+  <p>You can cancel or change an order by messaging us any time before we confirm dispatch. For returns, exchanges and damaged items, see our full <a href="shipping-returns.html" style="color:var(--pink2);text-decoration:underline">Shipping &amp; Returns policy</a>.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">7. Account &amp; Privacy</h2>
+  <p>Your name, contact number and address are used only to fulfil your orders and are not sold to third parties. See our full <a href="privacy.html" style="color:var(--pink2);text-decoration:underline">Privacy Policy</a> for details, or delete your saved details anytime from Settings.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">8. Changes to these Terms</h2>
+  <p>We may update these terms from time to time as the store grows; the "last updated" date at the top of this page will reflect the latest version.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">9. Contact</h2>
+  <p>For any questions about these terms, reach us on WhatsApp: <a id="termsWaLink" href="#" target="_blank" rel="noopener" style="color:var(--pink2);text-decoration:underline">message us here</a>, or check our <a href="faq.html" style="color:var(--pink2);text-decoration:underline">FAQ</a> for quick answers.</p>
+
+  <p style="margin-top:40px;padding:16px;background:#f8edf0;font-size:12px;color:#8a6d76">This is starter placeholder text, not legal advice. Replace it with terms written or reviewed by a lawyer before relying on it for a live store.</p>
+</main>
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="index.html#shop">Shop</a><a href="index.html#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
+(async () => {
+  if (typeof NEXORA_READY === "undefined" || !NEXORA_READY) return;
+  const waNumber = (await dbGetSetting("whatsapp_number")) || "919999999999";
+  const link = document.getElementById("termsWaLink");
+  if (link) link.href = `https://wa.me/${waNumber}`;
+})();
+</script>
+</body></html>
