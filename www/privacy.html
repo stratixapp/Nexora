@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — NEXORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1B1618">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png"></head>
+<body style="display:block">
+<header class="header">
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><a class="admin-link" href="settings.html">Back to Settings</a></div>
+</header>
+
+<main style="max-width:700px;margin:0 auto;padding:50px 6vw 100px;line-height:1.8;color:var(--muted)">
+  <p class="eyebrow">POLICIES</p>
+  <h1 style="font-family:'Playfair Display',serif;font-weight:500;font-size:38px;margin:4px 0 10px;color:var(--ink)">Privacy Policy</h1>
+  <p style="font-size:12px;color:#a48a92;margin-bottom:34px">Last updated: <span id="lastUpdated"></span> — placeholder text, edit this page for your store.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">1. What we collect</h2>
+  <p>If you create an account: your name, email, phone number, and delivery address (street, landmark, city). If you order as a guest, only what you type into the cart's delivery-details form — this is saved on your own device (browser localStorage), not on our server, unless you send it to us via WhatsApp. We also store the items in your cart on your device the same way, so it's there next time you visit.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">2. How we use it</h2>
+  <p>Solely to process and deliver your orders, confirm details over WhatsApp, and — if you're signed in — to pre-fill your delivery details next time so you don't retype them. We do not use your data for anything beyond running the store.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">3. Cookies &amp; local storage</h2>
+  <p>NEXORA doesn't use tracking cookies or third-party ad trackers. We use your browser's local storage to remember your cart and (for guests) your delivery details, purely so the site works smoothly across visits. Clearing your browser data removes this information.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">4. Sharing with third parties</h2>
+  <p>We do not sell, rent, or trade your personal information. Your details are shared only with the systems needed to run the store — our database/hosting provider (Supabase) and WhatsApp, when you choose to send us an order or message. We don't share data with advertisers.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">5. Data security</h2>
+  <p>Account data is stored with Supabase, using row-level security so only you (and the store admin) can access your profile. No online payment details are collected or stored on this website, since ordering happens over WhatsApp.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">6. Your rights</h2>
+  <p>You can view and update your details anytime from <a href="profile.html" style="color:var(--pink2);text-decoration:underline">Profile</a>, or remove your saved name, phone and address from <a href="settings.html" style="color:var(--pink2);text-decoration:underline">Settings → Delete my saved details</a>. To delete your account entirely, message us on WhatsApp and we'll action it.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">7. Children's privacy</h2>
+  <p>NEXORA is not directed at children under 13, and we don't knowingly collect data from them.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">8. Changes to this policy</h2>
+  <p>We may update this policy as the store grows; the "last updated" date above reflects the latest version.</p>
+
+  <h2 style="font-size:18px;color:var(--ink)">9. Contact</h2>
+  <p>Questions about your data? Reach us on WhatsApp: <a id="privacyWaLink" href="#" target="_blank" rel="noopener" style="color:var(--pink2);text-decoration:underline">message us here</a>.</p>
+
+  <p style="margin-top:40px;padding:16px;background:#f8edf0;font-size:12px;color:#8a6d76">This is starter placeholder text, not legal advice. Replace it with a policy written or reviewed by a lawyer before relying on it for a live store — especially if you plan to add payment processing, marketing emails, or analytics later.</p>
+</main>
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="index.html#shop">Shop</a><a href="index.html#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+document.getElementById("lastUpdated").textContent = new Date().toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
+(async () => {
+  if (typeof NEXORA_READY === "undefined" || !NEXORA_READY) return;
+  const waNumber = (await dbGetSetting("whatsapp_number")) || "919999999999";
+  const link = document.getElementById("privacyWaLink");
+  if (link) link.href = `https://wa.me/${waNumber}`;
+})();
+</script>
+</body></html>

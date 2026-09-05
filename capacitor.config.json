@@ -1,0 +1,15 @@
+{
+  "appId": "com.stratix.nexora",
+  "appName": "NEXORA",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "backgroundColor": "#FAF6F2",
+  "android": {
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https",
+    "url": "https://stratixapp.github.io/Nexora/",
+    "cleartext": false
+  }
+}

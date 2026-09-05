@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — NEXORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1B1618">
+<link rel="apple-touch-icon" href="assets/icons/icon-180.png"></head>
+<body>
+<header class="header">
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <a class="logo" href="index.html">NEXORA<span>.</span></a>
+  <nav><a href="index.html#shop">Shop</a></nav>
+  <div class="head-actions"><a class="admin-link" href="admin-login.html">Admin</a><a class="admin-link" id="accountLink" href="account.html">Sign in</a></div>
+</header>
+<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+<div class="side-menu" id="sideMenu">
+  <div class="side-menu-top"><a class="logo" href="index.html">NEXORA<span>.</span></a><button class="close" id="closeSideMenu">×</button></div>
+  <div id="sideMenuProfile"></div>
+  <p class="side-menu-label">Shop by category</p>
+  <div id="sideMenuCats"><p class="muted">Loading…</p></div>
+  <p class="side-menu-label">Store</p>
+  <a class="side-link" href="admin-login.html">🔑 Admin login</a>
+</div>
+
+<main class="cart-page">
+  <p class="eyebrow">YOUR BAG</p>
+  <h1 style="font-family:'Playfair Display',serif;font-weight:500;margin:4px 0 30px">Cart</h1>
+  <div id="cartItems"><p class="muted">Loading…</p></div>
+  <div id="cartSummary"></div>
+</main>
+<div class="size-guide-modal" id="cartSizeGuideModal">
+  <div class="size-guide-box">
+    <button class="close" id="closeCartSizeGuide">×</button>
+    <p class="eyebrow">Size guide</p>
+    <h2 style="font:500 30px 'Playfair Display',serif;margin:4px 0 12px">Find your fit</h2>
+    <p class="size-guide-note">Indian standard sizing — general reference, fit can vary slightly by style. Measurements in inches.</p>
+    <div id="cartSizeGuideContent"><p class="muted">Loading…</p></div>
+    <p class="size-guide-note">Between sizes, or unsure? Ask us on WhatsApp before ordering and we'll help you pick.</p>
+  </div>
+</div>
+<footer><div><a class="logo" href="index.html">NEXORA<span>.</span></a><p>Everything, beautifully delivered.</p></div><div><h4>Explore</h4><a href="index.html#shop">Shop</a><a href="index.html#categories">Categories</a></div><div><h4>Help</h4><a href="faq.html">FAQ</a><a href="shipping-returns.html">Shipping &amp; Returns</a><a href="terms.html">Terms &amp; Conditions</a><a href="privacy.html">Privacy Policy</a></div><div><h4>Connect</h4><a href="#">Instagram</a><a id="footerWa" href="#" target="_blank" rel="noopener">WhatsApp</a></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/config.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/cart-page.js"></script>
+</body></html>
